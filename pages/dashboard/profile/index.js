@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
-import { useUser, useSupabaseClient } from "@supabase/auth-helpers-react";
+import {
+  useUser,
+  useSupabaseClient,
+  useSession,
+} from "@supabase/auth-helpers-react";
 
-export default function Account({ session }) {
+export default function ProfilePage() {
+  const session = useSession();
   const supabase = useSupabaseClient();
   const user = useUser();
   const [loading, setLoading] = useState(true);
@@ -96,15 +101,6 @@ export default function Account({ session }) {
           disabled={loading}
         >
           {loading ? "Loading ..." : "Update"}
-        </button>
-      </div>
-
-      <div>
-        <button
-          className="button block"
-          onClick={() => supabase.auth.signOut()}
-        >
-          Sign Out
         </button>
       </div>
     </div>
