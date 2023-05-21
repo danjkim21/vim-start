@@ -7,15 +7,15 @@ const Sidebar = ({ session }) => {
   return (
     <section
       className="w-1/4 flex border-solid border-2
-       border-gray-700 flex-col"
+       border-purple-600 flex-col mt-2 mx-2 p-1"
     >
       <section className="sidebar-heading">~/workspace</section>
-      <ul className="sidebar-navLinks">
+      <ul className="sidebar-navLinks ml-4">
         <li>
           <Link href="/">Bookmarks</Link>
         </li>
         <li>
-          <Link href="/">Tasks</Link>
+          <Link href="/dashboard/tasks">Tasks</Link>
         </li>
         <li>
           <Link href="/dashboard/profile">Settings</Link>
