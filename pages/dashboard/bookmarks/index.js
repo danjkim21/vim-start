@@ -2,37 +2,37 @@ import { useSupabaseClient, useUser } from "@supabase/auth-helpers-react";
 import DashboardLayout from "../Layout";
 import { useEffect, useState } from "react";
 
-const Tasks = () => {
+const Bookmarks = () => {
   const supabase = useSupabaseClient();
   const user = useUser();
-  const [tasks, setTasks] = useState(null);
+  const [bookmarks, setBookmarks] = useState(null);
 
   useEffect(() => {
-    if (user) loadTasks();
+    if (user) loadBookmarks();
     // eslint-disable-next-line
   }, [user, supabase]);
 
-  async function loadTasks() {
+  async function loadBookmarks() {
     let { data, error, status } = await supabase
-      .from("Tasks")
+      .from("Bookmarks")
       .select(`*`)
       .eq("id", user.id);
 
     if (status === 200) {
-      setTasks(data);
+      setBookmarks(data);
     }
     if (status === 400) {
       console.log(error);
     }
   }
 
-  console.log(tasks);
+  console.log(bookmarks);
 
   return (
     <DashboardLayout>
-      <>Tasks page</>
+      <>Bookmarks page</>
     </DashboardLayout>
   );
 };
 
-export default Tasks;
+export default Bookmarks;

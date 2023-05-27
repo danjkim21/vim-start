@@ -30,17 +30,12 @@ export default function ProfilePage() {
         .eq("id", user.id)
         .single();
 
-      if (error && status !== 406) {
-        throw error;
-      }
-
       if (data) {
         setUsername(data.username);
         setWebsite(data.website);
         setAvatarUrl(data.avatar_url);
       }
     } catch (error) {
-      alert("Error loading user data!");
       console.log(error);
     } finally {
       setLoading(false);
@@ -81,6 +76,7 @@ export default function ProfilePage() {
               type="text"
               value={session && session.user.email}
               disabled
+              className="rounded-sm"
             />
           </div>
           <div>
@@ -90,6 +86,7 @@ export default function ProfilePage() {
               type="text"
               value={username || ""}
               onChange={(e) => setUsername(e.target.value)}
+              className="bg-gray-600 rounded-sm"
             />
           </div>
           <div>
@@ -99,6 +96,7 @@ export default function ProfilePage() {
               type="url"
               value={website || ""}
               onChange={(e) => setWebsite(e.target.value)}
+              className="bg-gray-600 rounded-sm"
             />
           </div>
 
