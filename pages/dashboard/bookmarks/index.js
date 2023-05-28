@@ -25,6 +25,7 @@ const Bookmarks = () => {
             <span className="text-cyan-300">{`<a>`}</span>
             <span>{bookmark.title}</span>
             <span className="text-cyan-300">{`</a>`}</span>
+            <span className="text-gray-400">{` // ${bookmark.description}`}</span>
           </Link>
         </article>
       );

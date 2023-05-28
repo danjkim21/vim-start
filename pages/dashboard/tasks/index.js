@@ -23,6 +23,7 @@ const Tasks = () => {
           <span className="text-cyan-300">{`<li>`}</span>
           <span>{task.title}</span>
           <span className="text-cyan-300">{`</li>`}</span>
+          <span className="text-gray-400">{` // ${task.description}`}</span>
         </section>
       );
     });
