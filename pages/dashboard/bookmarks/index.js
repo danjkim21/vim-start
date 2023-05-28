@@ -4,7 +4,18 @@ import Link from "next/link";
 
 const Bookmarks = () => {
   const { bookmarks, setBookmarks, error, status } = useGetBookmarks();
+  let placeholder;
   let bookmarkItems;
+
+  if (status !== 200) {
+    placeholder = (
+      <article className="w-full">
+        <span className="text-green-300">{`<p>`}</span>
+        <span>Loading ...</span>
+        <span className="text-green-300">{`</p>`}</span>
+      </article>
+    );
+  }
 
   if (bookmarks && status === 200) {
     bookmarkItems = bookmarks.map((bookmark) => {
@@ -28,6 +39,7 @@ const Bookmarks = () => {
           <span>Bookmarks</span>
           <span className="text-purple-300">{`</h1>`}</span>
         </h1>
+        {placeholder}
         {bookmarkItems}
       </>
     </DashboardLayout>

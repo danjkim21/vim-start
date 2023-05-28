@@ -3,8 +3,18 @@ import useGetTasks from "@/hooks/useGetTasks";
 
 const Tasks = () => {
   const { tasks, setTasks, error, status } = useGetTasks();
-
+  let placeholder;
   let taskItems;
+
+  if (status !== 200) {
+    placeholder = (
+      <article className="w-full">
+        <span className="text-green-300">{`<p>`}</span>
+        <span>Loading ...</span>
+        <span className="text-green-300">{`</p>`}</span>
+      </article>
+    );
+  }
 
   if (tasks && status === 200) {
     taskItems = tasks.map((task) => {
@@ -26,6 +36,7 @@ const Tasks = () => {
           <span>Tasks</span>
           <span className="text-purple-300">{`</h1>`}</span>
         </h1>
+        {placeholder}
         {taskItems}
       </>
     </DashboardLayout>
