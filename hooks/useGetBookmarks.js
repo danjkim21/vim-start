@@ -15,7 +15,7 @@ export default function useGetBookmarks() {
 
   async function loadBookmarks() {
     let { data, error, status } = await supabase
-      .from("Bookmarks")
+      .from("bookmarks")
       .select(`*`)
       .eq("id", user.id);
 

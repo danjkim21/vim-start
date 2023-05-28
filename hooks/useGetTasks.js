@@ -15,7 +15,7 @@ export default function useGetTasks() {
 
   async function loadTasks() {
     let { data, error, status } = await supabase
-      .from("Tasks")
+      .from("tasks")
       .select(`*`)
       .eq("id", user.id);
 
