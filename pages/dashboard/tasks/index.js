@@ -1,3 +1,4 @@
+import Tag from "@/components/Tag";
 import DashboardLayout from "../Layout";
 import useGetTasks from "@/hooks/useGetTasks";
 
@@ -9,9 +10,9 @@ const Tasks = () => {
   if (status !== 200) {
     placeholder = (
       <article className="w-full">
-        <span className="text-green-300">{`<p>`}</span>
-        <span>Loading ...</span>
-        <span className="text-green-300">{`</p>`}</span>
+        <Tag tagName="p" tagColor="text-green-300">
+          Loading ...
+        </Tag>
       </article>
     );
   }
@@ -20,9 +21,9 @@ const Tasks = () => {
     taskItems = tasks.map((task) => {
       return (
         <section key={task.id}>
-          <span className="text-cyan-300">{`<li>`}</span>
-          <span>{task.title}</span>
-          <span className="text-cyan-300">{`</li>`}</span>
+          <Tag tagName="a" tagColor="text-cyan-300">
+            {task.title}
+          </Tag>
           <span className="text-gray-400">{` // ${task.description}`}</span>
         </section>
       );
@@ -33,9 +34,9 @@ const Tasks = () => {
     <DashboardLayout>
       <>
         <h1>
-          <span className="text-purple-300">{`<h1>`}</span>
-          <span>Tasks</span>
-          <span className="text-purple-300">{`</h1>`}</span>
+          <Tag tagName="h1" tagColor="text-purple-300">
+            Tags
+          </Tag>
         </h1>
         {placeholder}
         {taskItems}

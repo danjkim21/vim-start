@@ -1,6 +1,7 @@
 import DashboardLayout from "../Layout";
 import useGetBookmarks from "../../../hooks/useGetBookmarks.js";
 import Link from "next/link";
+import Tag from "@/components/Tag";
 
 const Bookmarks = () => {
   const { bookmarks, setBookmarks, error, status } = useGetBookmarks();
@@ -10,9 +11,9 @@ const Bookmarks = () => {
   if (status !== 200) {
     placeholder = (
       <article className="w-full">
-        <span className="text-green-300">{`<p>`}</span>
-        <span>Loading ...</span>
-        <span className="text-green-300">{`</p>`}</span>
+        <Tag tagName="p" tagColor="text-green-300">
+          Loading ...
+        </Tag>
       </article>
     );
   }
@@ -22,9 +23,9 @@ const Bookmarks = () => {
       return (
         <article className="w-full" key={bookmark.id}>
           <Link href={bookmark.link}>
-            <span className="text-cyan-300">{`<a>`}</span>
-            <span>{bookmark.title}</span>
-            <span className="text-cyan-300">{`</a>`}</span>
+            <Tag tagName="a" tagColor="text-cyan-300">
+              {bookmark.title}
+            </Tag>
             <span className="text-gray-400">{` // ${bookmark.description}`}</span>
           </Link>
         </article>
@@ -36,9 +37,9 @@ const Bookmarks = () => {
     <DashboardLayout>
       <>
         <h1>
-          <span className="text-purple-300">{`<h1>`}</span>
-          <span>Bookmarks</span>
-          <span className="text-purple-300">{`</h1>`}</span>
+          <Tag tagName="h1" tagColor="text-purple-300">
+            Bookmarks
+          </Tag>
         </h1>
         {placeholder}
         {bookmarkItems}
