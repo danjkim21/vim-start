@@ -21,14 +21,14 @@ const Bookmarks = () => {
   if (bookmarks && status === 200) {
     bookmarkItems = bookmarks.map((bookmark) => {
       return (
-        <article className="w-full" key={bookmark.id}>
-          <Link href={bookmark.link}>
-            <Tag tagName="a" tagColor="text-cyan-300">
+        <li className="w-full" key={bookmark.id}>
+          <Link href={bookmark.link} className="text-slate-200">
+            <Tag tagName="a" tagColor="text-purple-400">
               {bookmark.title}
             </Tag>
-            <span className="text-gray-400">{` // ${bookmark.description}`}</span>
           </Link>
-        </article>
+          <span className="text-slate-400">{` // ${bookmark.description}`}</span>
+        </li>
       );
     });
   }
@@ -37,12 +37,20 @@ const Bookmarks = () => {
     <DashboardLayout>
       <>
         <h1>
-          <Tag tagName="h1" tagColor="text-purple-300">
-            Bookmarks
-          </Tag>
+          <span className="text-violet-300">import</span> <span>{`{`}</span>{" "}
+          <span className="text-orange-200">{`Bookmarks`}</span>{" "}
+          <span>{`}`}</span> <span className="text-violet-300">from</span>{" "}
+          <span>{`'`}</span>
+          <span className="text-green-300">{`~/workspace/api`}</span>
+          <span>{`'`}</span>
         </h1>
-        {placeholder}
-        {bookmarkItems}
+
+        <div className="mt-4 ">
+          {placeholder}
+          <ol className="list-decimal list-inside px-4 marker:text-slate-400">
+            {bookmarkItems}
+          </ol>
+        </div>
       </>
     </DashboardLayout>
   );

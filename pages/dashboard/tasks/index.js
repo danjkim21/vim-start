@@ -20,12 +20,12 @@ const Tasks = () => {
   if (tasks && status === 200) {
     taskItems = tasks.map((task) => {
       return (
-        <section key={task.id}>
-          <Tag tagName="a" tagColor="text-cyan-300">
+        <li className="w-full" key={task.id}>
+          <Tag tagName="a" tagColor="text-purple-400">
             {task.title}
           </Tag>
-          <span className="text-gray-400">{` // ${task.description}`}</span>
-        </section>
+          <span className="text-slate-400">{` // ${task.description}`}</span>
+        </li>
       );
     });
   }
@@ -34,12 +34,18 @@ const Tasks = () => {
     <DashboardLayout>
       <>
         <h1>
-          <Tag tagName="h1" tagColor="text-purple-300">
-            Tags
-          </Tag>
+          <span className="text-violet-300">import</span> <span>{`{`}</span>{" "}
+          <span className="text-orange-200">{`Tasks`}</span> <span>{`}`}</span>{" "}
+          <span className="text-violet-300">from</span> <span>{`'`}</span>
+          <span className="text-green-300">{`~/workspace/api`}</span>
+          <span>{`'`}</span>
         </h1>
-        {placeholder}
-        {taskItems}
+        <div className="mt-4 ">
+          {placeholder}
+          <ol className="list-decimal list-inside px-4 marker:text-slate-400">
+            {taskItems}
+          </ol>
+        </div>
       </>
     </DashboardLayout>
   );
